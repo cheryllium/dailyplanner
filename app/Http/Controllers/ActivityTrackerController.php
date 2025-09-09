@@ -20,8 +20,8 @@ class ActivityTrackerController extends Controller
                 $daysUntilDue = null;
                 
                 if ($activity->last_completed_date && $activity->frequency_days) {
-                    $nextDueDate = $activity->last_completed_date->addDays($activity->frequency_days);
-                    $daysUntilDue = (int) now()->diffInDays($nextDueDate, false);
+                    $nextDueDate = $activity->last_completed_date->copy()->addDays($activity->frequency_days);
+                    $daysUntilDue = (int) now()->startOfDay()->diffInDays($nextDueDate->startOfDay(), false);
                 }
                 
                 $activity->next_due_date = $nextDueDate;
