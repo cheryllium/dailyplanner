@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ActivityTracker::class);
     }
+
+    public function calendarEvents(): HasMany
+    {
+        return $this->hasMany(CalendarEvent::class);
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use App\Models\RecurringTodo;
 use App\Models\ActivityTracker;
+use App\Models\CalendarEvent;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -37,7 +38,13 @@ class TodoController extends Controller
                 return $activity->isOverdue();
             });
 
-        return view('todos.index', compact('todos', 'today', 'overdueActivities'));
+        // Get today's calendar events
+        $todaysEvents = $user->calendarEvents()
+            ->whereDate('date', $today)
+            ->orderBy('time')
+            ->get();
+
+        return view('todos.index', compact('todos', 'today', 'overdueActivities', 'todaysEvents'));
     }
     
     /**

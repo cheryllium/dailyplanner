@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivityTrackerController;
+use App\Http\Controllers\CalendarEventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\RecurringTodoController;
@@ -37,6 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/activity-trackers', [ActivityTrackerController::class, 'store'])->name('activity-trackers.store');
     Route::put('/activity-trackers/{activityTracker}', [ActivityTrackerController::class, 'update'])->name('activity-trackers.update');
     Route::delete('/activity-trackers/{activityTracker}', [ActivityTrackerController::class, 'destroy'])->name('activity-trackers.destroy');
+
+    // Calendar Event routes
+    Route::get('/calendar', [CalendarEventController::class, 'index'])->name('calendar-events.index');
+    Route::post('/calendar', [CalendarEventController::class, 'store'])->name('calendar-events.store');
+    Route::put('/calendar/{calendarEvent}', [CalendarEventController::class, 'update'])->name('calendar-events.update');
+    Route::delete('/calendar/{calendarEvent}', [CalendarEventController::class, 'destroy'])->name('calendar-events.destroy');
+    Route::get('/calendar/events', [CalendarEventController::class, 'getEvents'])->name('calendar-events.get');
 });
 
 require __DIR__.'/auth.php';

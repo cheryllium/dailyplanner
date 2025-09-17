@@ -30,8 +30,8 @@ class ActivityTracker extends Model
             return false;
         }
 
-        $nextDueDate = $this->last_completed_date->addDays($this->frequency_days);
-        $daysUntilDue = (int) now()->diffInDays($nextDueDate, false);
+        $nextDueDate = $this->last_completed_date->copy()->addDays($this->frequency_days);
+        $daysUntilDue = (int) now()->startOfDay()->diffInDays($nextDueDate->startOfDay(), false);
         return $daysUntilDue <= 0;
     }
 
@@ -41,7 +41,7 @@ class ActivityTracker extends Model
             return 0;
         }
 
-        $daysSinceCompleted = $this->last_completed_date->diffInDays(now());
+        $daysSinceCompleted = $this->last_completed_date->diffInDays(now()->startOfDay());
         return (int) ($daysSinceCompleted - $this->frequency_days);
     }
 }

@@ -1,3 +1,176 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Todo App Styling */
+:root {
+  --color-primary-yellow: #dba14f;
+  --color-primary-red: #db6f4f;
+  --color-primary-blue: #4ed2db;
+  --color-gray: #4f5b5c;
+  --color-border-muted: #5c564f;
+  --color-border-dark: #5c524f;
+  --color-yellow-light: rgba(219, 161, 79, 0.1);
+  --color-red-light: rgba(219, 111, 79, 0.1);
+  --color-blue-light: rgba(78, 210, 219, 0.1);
+}
+
+/* Modern glassmorphism-style cards */
+.todo-card {
+  @apply bg-white/80 backdrop-blur-sm border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
+  border-color: rgba(92, 86, 79, 0.2);
+}
+
+.todo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(92, 86, 79, 0.15);
+}
+
+/* Custom buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary-yellow) 0%, #d4951a 100%);
+  @apply text-white font-medium px-6 py-3 rounded-xl shadow-sm hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #d4951a 0%, var(--color-primary-yellow) 100%);
+}
+
+.btn-secondary {
+  background: var(--color-primary-blue);
+  @apply text-white font-medium px-4 py-2 rounded-lg hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200;
+}
+
+.btn-danger {
+  background: var(--color-primary-red);
+  @apply text-white font-medium px-4 py-2 rounded-lg hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200;
+}
+
+/* Navigation styling */
+.nav-gradient {
+  background: linear-gradient(135deg, var(--color-primary-yellow) 0%, var(--color-primary-blue) 100%);
+}
+
+/* Custom form inputs */
+.form-input-modern {
+  @apply border-2 rounded-xl px-4 py-3 focus:outline-none transition-all duration-200;
+  border-color: var(--color-border-muted);
+}
+
+.form-input-modern:focus {
+  border-color: var(--color-primary-yellow);
+  box-shadow: 0 0 0 3px rgba(219, 161, 79, 0.1);
+}
+
+/* Todo item styling */
+.todo-item {
+  @apply border rounded-2xl p-5 transition-all duration-300;
+  border-color: rgba(92, 86, 79, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 3px rgba(92, 86, 79, 0.1);
+}
+
+.todo-item:hover {
+  border-color: var(--color-primary-yellow);
+  background: var(--color-yellow-light);
+  box-shadow: 0 4px 12px rgba(219, 161, 79, 0.15);
+}
+
+.todo-item.completed {
+  background: linear-gradient(135deg, rgba(78, 210, 219, 0.1) 0%, rgba(219, 161, 79, 0.05) 100%);
+  border-color: rgba(78, 210, 219, 0.3);
+}
+
+/* Activity tracker styling */
+.activity-card {
+  @apply border rounded-2xl p-5 transition-all duration-300;
+  border-color: rgba(92, 86, 79, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+  box-shadow: 0 1px 3px rgba(92, 86, 79, 0.1);
+}
+
+.activity-card:hover {
+  border-color: var(--color-primary-blue);
+  background: var(--color-blue-light);
+  box-shadow: 0 4px 12px rgba(78, 210, 219, 0.15);
+}
+
+/* Status badges */
+.badge-overdue {
+  background: linear-gradient(135deg, var(--color-primary-red) 0%, #c53030 100%);
+  @apply text-white px-3 py-1 rounded-full text-sm font-medium shadow-sm;
+}
+
+.badge-due-soon {
+  background: linear-gradient(135deg, var(--color-primary-yellow) 0%, #d4951a 100%);
+  @apply text-white px-3 py-1 rounded-full text-sm font-medium shadow-sm;
+}
+
+.badge-due-later {
+  background: linear-gradient(135deg, var(--color-primary-blue) 0%, #38b2ac 100%);
+  @apply text-white px-3 py-1 rounded-full text-sm font-medium shadow-sm;
+}
+
+/* Celebration animation */
+@keyframes celebrationPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.celebration-card {
+  background: linear-gradient(135deg, var(--color-yellow-light) 0%, var(--color-blue-light) 100%);
+  @apply border-2 rounded-2xl p-8 text-center shadow-lg;
+  border-color: var(--color-primary-yellow);
+  animation: celebrationPulse 2s ease-in-out infinite;
+}
+
+/* Page headers */
+.page-header {
+  background: linear-gradient(135deg, var(--color-gray) 0%, var(--color-border-dark) 100%);
+  @apply text-white py-8;
+}
+
+/* Interactive elements */
+.interactive-hover {
+  @apply cursor-pointer transition-all duration-200;
+}
+
+.interactive-hover:hover {
+  background: var(--color-yellow-light);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  margin: -0.5rem;
+}
+
+/* Custom checkbox styling */
+.custom-checkbox {
+  @apply w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 cursor-pointer;
+  border-color: var(--color-border-muted);
+}
+
+.custom-checkbox:hover {
+  border-color: var(--color-primary-yellow);
+  background: var(--color-yellow-light);
+}
+
+.custom-checkbox.checked {
+  background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-primary-yellow) 100%);
+  border-color: var(--color-primary-blue);
+}
+
+/* Links */
+.custom-link {
+  color: var(--color-primary-blue);
+  @apply hover:underline font-medium transition-colors duration-200;
+}
+
+.custom-link:hover {
+  color: var(--color-primary-yellow);
+}
+
+/* Reminder section */
+.reminder-card {
+  background: linear-gradient(135deg, var(--color-red-light) 0%, rgba(219, 111, 79, 0.05) 100%);
+  @apply border rounded-2xl p-5;
+  border-color: rgba(219, 111, 79, 0.3);
+}
